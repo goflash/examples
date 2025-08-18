@@ -9,6 +9,7 @@
 # Go build artifacts
 bin/
 build/
+categories/**/main
 *.exe
 *.exe~
 *.dll
