@@ -1,4 +1,4 @@
-# 🚀 goflash Examples
+# 🚀 GoFlash Examples
 
 [![CI](https://github.com/goflash/examples/actions/workflows/ci.yml/badge.svg)](https://github.com/goflash/examples/actions/workflows/ci.yml)
 [![Go](https://img.shields.io/badge/Go-1.22+-00ADD8?logo=go&logoColor=white)](https://go.dev/)
