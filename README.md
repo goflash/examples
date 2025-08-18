@@ -1,7 +1,7 @@
 # 🚀 goflash Examples
 
 [![CI](https://github.com/goflash/examples/actions/workflows/ci.yml/badge.svg)](https://github.com/goflash/examples/actions/workflows/ci.yml)
-[![Go](https://img.shields.io/badge/Go-1.23+-00ADD8?logo=go&logoColor=white)](https://go.dev/)
+[![Go](https://img.shields.io/badge/Go-1.22+-00ADD8?logo=go&logoColor=white)](https://go.dev/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 A curated collection of small, focused examples showing how to build web apps with [goflash](https://github.com/goflash/flash).
