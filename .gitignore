@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+
+# Editors/IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Go build artifacts
+bin/
+build/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go coverage
+coverage.*
+*.coverprofile
+*.cov
+
+# Logs
+*.log
+
+# Node / Frontend leftovers (if any examples add UI)
+node_modules/
+
+# Misc
+.tmp/
+.cache/
+.env*
