@@ -14,6 +14,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
 	"go.opentelemetry.io/otel/sdk/resource"
 	tracesdk "go.opentelemetry.io/otel/sdk/trace"
+	"go.opentelemetry.io/otel/trace"
 )
 
 // setupTracer configures OpenTelemetry tracing for the given service name.
@@ -52,6 +53,20 @@ func main() {
 	simple.GET("/slow", func(c flash.Ctx) error {
 		time.Sleep(50 * time.Millisecond)
 		return c.String(http.StatusOK, "simple slow")
+	})
+
+	// Demonstrate setting attributes and events on the current span
+	simple.GET("/attrs", func(c flash.Ctx) error {
+		span := trace.SpanFromContext(c.Request().Context())
+		span.SetAttributes(
+			attribute.String("user.id", "u123"),
+			attribute.String("feature", "attrs-endpoint"),
+			attribute.Int("attempt", 1),
+		)
+		span.AddEvent("custom.event", trace.WithAttributes(
+			attribute.String("note", "added attributes and event"),
+		))
+		return c.String(http.StatusOK, "attributes and event recorded")
 	})
 
 	// Group 2: advanced OTel config
