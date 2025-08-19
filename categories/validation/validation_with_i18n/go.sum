@@ -15,8 +15,10 @@ github.com/go-playground/universal-translator v0.18.1 h1:Bcnm0ZwsGyWbCzImXv+pAJn
 github.com/go-playground/universal-translator v0.18.1/go.mod h1:xekY+UJKNuX9WP91TpwSH2VMlDf28Uj24BCp08ZFTUY=
 github.com/go-playground/validator/v10 v10.27.0 h1:w8+XrWVMhGkxOaaowyKH35gFydVHOvC0/uWoy2Fzwn4=
 github.com/go-playground/validator/v10 v10.27.0/go.mod h1:I5QpIEbmr8On7W0TktmJAumgzX4CA1XNl4ZmDuVHKKo=
-github.com/goflash/flash v0.0.0-20250818095021-0c736f4bb38b h1:95wjEkuoqSnId/bK2oqVG15gZO+dxtocHCwi5kdUKIM=
-github.com/goflash/flash v0.0.0-20250818095021-0c736f4bb38b/go.mod h1:J0uelRTaCoJDJh5BlmocQz4yB0xpOXVvgv78XUbQk1c=
+github.com/goflash/flash v0.0.0-20250818120956-c2ffd79ebaf7 h1:nYMRn9BPSdbDr5frTv+rg5NYcPr9Pexvvn4oSc3bU70=
+github.com/goflash/flash v0.0.0-20250818120956-c2ffd79ebaf7/go.mod h1:J0uelRTaCoJDJh5BlmocQz4yB0xpOXVvgv78XUbQk1c=
+github.com/goflash/flash/v2 v2.0.0-beta.4 h1:M7QbNUsUcY6Ws23ODKpdFccmZaqskMCrqIGV28kwx8M=
+github.com/goflash/flash/v2 v2.0.0-beta.4/go.mod h1:yW7ZSH58J2Bz3Xsgzpu6cMYpJA1hiZonXCuy3trZ78M=
 github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
 github.com/google/go-cmp v0.7.0/go.mod h1:pXiqmnSA92OHEEa9HXL2W4E7lf9JzCmGVUdgjX3N/iU=
 github.com/julienschmidt/httprouter v1.3.0 h1:U0609e9tgbseu3rBINet9P48AI/D3oJs4dN7jwJOQ1U=

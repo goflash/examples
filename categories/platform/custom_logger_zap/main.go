@@ -6,8 +6,8 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/goflash/flash"
-	mw "github.com/goflash/flash/middleware"
+	"github.com/goflash/flash/v2"
+	mw "github.com/goflash/flash/v2/middleware"
 	"go.uber.org/zap"
 )
 
@@ -49,7 +49,7 @@ func main() {
 	app.SetLogger(slog.New(adapter))
 
 	app.Use(mw.Logger())
-	app.GET("/", func(c *flash.Ctx) error { return c.String(http.StatusOK, "zap via slog adapter") })
+	app.GET("/", func(c flash.Ctx) error { return c.String(http.StatusOK, "zap via slog adapter") })
 
 	log.Fatal(http.ListenAndServe(":8080", app))
 }

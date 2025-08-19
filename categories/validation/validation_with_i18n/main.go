@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/goflash/flash"
-	"github.com/goflash/flash/middleware"
+	"github.com/goflash/flash/v2"
+	"github.com/goflash/flash/v2/middleware"
 	"github.com/goflash/flash/validate"
 
 	// App-level i18n wiring
@@ -58,7 +58,7 @@ func main() {
 	}))
 
 	// POST /<lang>/users accepts a JSON user and validates fields using framework validation.
-	app.POST("/:lang/users", func(c *flash.Ctx) error {
+	app.POST("/:lang/users", func(c flash.Ctx) error {
 		var u User
 		if err := c.BindJSON(&u); err != nil {
 			return c.Status(http.StatusUnprocessableEntity).JSON(map[string]any{

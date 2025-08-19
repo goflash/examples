@@ -53,6 +53,7 @@ while IFS= read -r -d '' modfile; do
 
     pushd "${moddir}" >/dev/null
     # Ensure module deps are tidy
+    rm go.sum
     if ! go mod tidy; then
         echo "[FAIL] ${relpath}: go mod tidy failed" >&2
         failures+=("${relpath}")

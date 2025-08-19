@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/goflash/flash"
-	mw "github.com/goflash/flash/middleware"
+	"github.com/goflash/flash/v2"
+	mw "github.com/goflash/flash/v2/middleware"
 )
 
 // main demonstrates CORS and per-route timeout middleware in flash.
@@ -21,7 +21,7 @@ func main() {
 	}))
 
 	// GET /maybe-slow sleeps for 2s, but is wrapped in a 1s timeout middleware.
-	app.GET("/maybe-slow", func(c *flash.Ctx) error {
+	app.GET("/maybe-slow", func(c flash.Ctx) error {
 		time.Sleep(2 * time.Second)
 		return c.String(http.StatusOK, "done")
 	}, mw.Timeout(mw.TimeoutConfig{Duration: 1 * time.Second}))

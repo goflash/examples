@@ -7,9 +7,9 @@ import (
 
 	"log/slog"
 
-	"github.com/goflash/flash"
 	logctx "github.com/goflash/flash/logctx"
-	mw "github.com/goflash/flash/middleware"
+	"github.com/goflash/flash/v2"
+	mw "github.com/goflash/flash/v2/middleware"
 )
 
 func main() {
@@ -22,7 +22,7 @@ func main() {
 	// Optional: emit structured access logs per request
 	app.Use(mw.Logger())
 
-	app.GET("/", func(c *flash.Ctx) error {
+	app.GET("/", func(c flash.Ctx) error {
 		// Retrieve the logger from the request context
 		l := logctx.LoggerFromContext(c.Context())
 		l.Info("handling request", "path", c.Path())

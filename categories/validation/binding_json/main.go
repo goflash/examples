@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/goflash/flash"
+	"github.com/goflash/flash/v2"
 	"github.com/goflash/flash/validate"
 )
 
@@ -26,7 +26,7 @@ func main() {
 	app := flash.New()
 
 	// POST /users binds JSON input and returns a JSON response.
-	app.POST("/users", func(c *flash.Ctx) error {
+	app.POST("/users", func(c flash.Ctx) error {
 		var in UserIn
 		if err := c.BindJSON(&in); err != nil {
 			// return c.String(http.StatusBadRequest, "invalid json")

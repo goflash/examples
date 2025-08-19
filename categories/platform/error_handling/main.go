@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/goflash/flash"
+	"github.com/goflash/flash/v2"
 )
 
 // errNotFound is a sentinel error for demonstration.
@@ -16,23 +16,23 @@ func main() {
 	app := flash.New()
 
 	// Override framework error handling
-	app.OnError = func(c *flash.Ctx, err error) {
+	app.SetErrorHandler(func(c flash.Ctx, err error) {
 		switch {
 		case errors.Is(err, errNotFound):
 			_ = c.String(http.StatusNotFound, "resource not found")
 		default:
 			_ = c.String(http.StatusInternalServerError, "internal error")
 		}
-	}
-
-	// Custom 404 handler
-	app.NotFound = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusNotFound)
-		_, _ = w.Write([]byte("custom 404"))
 	})
 
+	// Custom 404 handler
+	app.SetNotFoundHandler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusNotFound)
+		_, _ = w.Write([]byte("custom 404"))
+	}))
+
 	// GET /thing/:id always returns errNotFound
-	app.GET("/thing/:id", func(c *flash.Ctx) error { return errNotFound })
+	app.GET("/thing/:id", func(c flash.Ctx) error { return errNotFound })
 
 	log.Fatal(http.ListenAndServe(":8080", app))
 }

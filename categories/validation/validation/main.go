@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/goflash/flash"
+	"github.com/goflash/flash/v2"
 	"github.com/goflash/flash/validate"
 )
 
@@ -19,7 +19,7 @@ func main() {
 	app := flash.New()
 
 	// POST /users accepts a JSON user and validates fields using framework validation.
-	app.POST("/users", func(c *flash.Ctx) error {
+	app.POST("/users", func(c flash.Ctx) error {
 		var u User
 		if err := c.BindJSON(&u); err != nil {
 			return c.Status(http.StatusUnprocessableEntity).JSON(map[string]any{

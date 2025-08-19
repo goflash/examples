@@ -3,7 +3,7 @@ module main
 go 1.23.0
 
 require (
-	github.com/goflash/flash v0.0.0-20250818095021-0c736f4bb38b
+	github.com/goflash/flash/v2 v2.0.0-beta.4
 	go.uber.org/zap v1.27.0
 )
 

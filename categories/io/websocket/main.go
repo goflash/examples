@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/goflash/flash"
+	"github.com/goflash/flash/v2"
 	"github.com/gorilla/websocket"
 )
 
@@ -16,7 +16,7 @@ func main() {
 	app := flash.New()
 
 	// GET /ws upgrades the connection to WebSocket and echoes messages.
-	app.GET("/ws", func(c *flash.Ctx) error {
+	app.GET("/ws", func(c flash.Ctx) error {
 		// If this is not a WebSocket upgrade request, return a clear 400 without invoking the upgrader.
 		if !websocket.IsWebSocketUpgrade(c.Request()) {
 			return c.String(http.StatusBadRequest, "WebSocket endpoint. Connect using a WS client.")

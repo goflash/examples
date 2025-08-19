@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/goflash/flash"
+	"github.com/goflash/flash/v2"
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -33,7 +33,7 @@ func main() {
 	app.HandleHTTP(http.MethodGet, "/users/:id", http.HandlerFunc(userHTTP))
 
 	// Also expose goflash routes
-	app.GET("/hello", func(c *flash.Ctx) error { return c.String(http.StatusOK, "hi") })
+	app.GET("/hello", func(c flash.Ctx) error { return c.String(http.StatusOK, "hi") })
 
 	// app implements http.Handler, so can be used anywhere
 	log.Fatal(http.ListenAndServe(":8080", app))

@@ -6,7 +6,8 @@ require (
 	github.com/go-playground/locales v0.14.1
 	github.com/go-playground/universal-translator v0.18.1
 	github.com/go-playground/validator/v10 v10.27.0
-	github.com/goflash/flash v0.0.0-20250818095021-0c736f4bb38b
+	github.com/goflash/flash v0.0.0-20250818120956-c2ffd79ebaf7
+	github.com/goflash/flash/v2 v2.0.0-beta.4
 )
 
 require (

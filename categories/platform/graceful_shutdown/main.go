@@ -9,14 +9,14 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/goflash/flash"
+	"github.com/goflash/flash/v2"
 )
 
 // main demonstrates graceful shutdown of a goflash web server on interrupt signal.
 func main() {
 	app := flash.New()
 	// GET / returns a simple OK response.
-	app.GET("/", func(c *flash.Ctx) error { return c.String(http.StatusOK, "ok") })
+	app.GET("/", func(c flash.Ctx) error { return c.String(http.StatusOK, "ok") })
 
 	h := &http.Server{Addr: ":8080", Handler: app}
 

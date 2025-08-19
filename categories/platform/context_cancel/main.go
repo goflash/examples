@@ -5,14 +5,14 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/goflash/flash"
+	"github.com/goflash/flash/v2"
 )
 
 // main demonstrates context cancellation and timeout handling in flash.
 func main() {
 	app := flash.New()
 	// GET /work simulates a long-running task, returns early if client disconnects or timeout occurs.
-	app.GET("/work", func(c *flash.Ctx) error {
+	app.GET("/work", func(c flash.Ctx) error {
 		select {
 		case <-time.After(2 * time.Second):
 			return c.String(http.StatusOK, "finished")

@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/goflash/flash"
+	"github.com/goflash/flash/v2"
 )
 
 // main demonstrates setting and reading cookies in flash.
@@ -13,7 +13,7 @@ func main() {
 	app := flash.New()
 
 	// GET /set sets a cookie named "sid".
-	app.GET("/set", func(c *flash.Ctx) error {
+	app.GET("/set", func(c flash.Ctx) error {
 		http.SetCookie(c.ResponseWriter(), &http.Cookie{
 			Name:     "sid",
 			Value:    "abc123",
@@ -25,7 +25,7 @@ func main() {
 	})
 
 	// GET /get reads the "sid" cookie if present.
-	app.GET("/get", func(c *flash.Ctx) error {
+	app.GET("/get", func(c flash.Ctx) error {
 		ck, err := c.Request().Cookie("sid")
 		if err != nil {
 			return c.String(http.StatusNotFound, "no cookie")

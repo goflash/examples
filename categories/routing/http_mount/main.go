@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/goflash/flash"
+	"github.com/goflash/flash/v2"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 
 	app := flash.New()
 	app.Mount("/mux", mux)
-	app.GET("/app", func(c *flash.Ctx) error { return c.String(http.StatusOK, "app handler") })
+	app.GET("/app", func(c flash.Ctx) error { return c.String(http.StatusOK, "app handler") })
 
 	log.Fatal(http.ListenAndServe(":8080", app))
 }

@@ -2,7 +2,7 @@ module main
 
 go 1.23.10
 
-require github.com/goflash/flash v0.0.0-20250818095021-0c736f4bb38b
+require github.com/goflash/flash/v2 v2.0.0-beta.4
 
 require (
 	github.com/gabriel-vasile/mimetype v1.4.8 // indirect

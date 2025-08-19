@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/goflash/flash"
-	mw "github.com/goflash/flash/middleware"
+	"github.com/goflash/flash/v2"
+	mw "github.com/goflash/flash/v2/middleware"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
@@ -48,8 +48,8 @@ func main() {
 
 	// Group 1: simple OTel usage
 	simple := app.Group("/simple", mw.OTel("demo-service"))
-	simple.GET("/", func(c *flash.Ctx) error { return c.String(http.StatusOK, "simple ok") })
-	simple.GET("/slow", func(c *flash.Ctx) error {
+	simple.GET("/", func(c flash.Ctx) error { return c.String(http.StatusOK, "simple ok") })
+	simple.GET("/slow", func(c flash.Ctx) error {
 		time.Sleep(50 * time.Millisecond)
 		return c.String(http.StatusOK, "simple slow")
 	})
@@ -58,13 +58,13 @@ func main() {
 	configGroup := app.Group("/config", mw.OTelWithConfig(mw.OTelConfig{
 		ServiceName:    "demo-service-config",
 		RecordDuration: true,
-		SpanName: func(c *flash.Ctx) string {
+		SpanName: func(c flash.Ctx) string {
 			if rt := c.Route(); rt != "" {
 				return c.Method() + " " + rt
 			}
 			return c.Method() + " " + c.Path()
 		},
-		Attributes: func(c *flash.Ctx) []attribute.KeyValue {
+		Attributes: func(c flash.Ctx) []attribute.KeyValue {
 			return []attribute.KeyValue{
 				attribute.String("client.addr", c.Request().RemoteAddr),
 			}
@@ -83,8 +83,8 @@ func main() {
 			attribute.String("env", "dev"),
 		},
 	}))
-	configGroup.GET("/", func(c *flash.Ctx) error { return c.String(http.StatusOK, "config ok") })
-	configGroup.GET("/bad", func(c *flash.Ctx) error { return c.String(http.StatusBadRequest, "config bad") })
+	configGroup.GET("/", func(c flash.Ctx) error { return c.String(http.StatusOK, "config ok") })
+	configGroup.GET("/bad", func(c flash.Ctx) error { return c.String(http.StatusBadRequest, "config bad") })
 
 	log.Fatal(http.ListenAndServe(":8080", app))
 }

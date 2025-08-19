@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/goflash/flash"
+	"github.com/goflash/flash/v2"
 )
 
 func main() {
@@ -12,13 +12,13 @@ func main() {
 
 	// Add a simple middleware
 	app.Use(func(next flash.Handler) flash.Handler {
-		return func(c *flash.Ctx) error {
+		return func(c flash.Ctx) error {
 			c.Header("X-Middleware", "1")
 			return next(c)
 		}
 	})
 
-	app.GET("/", func(c *flash.Ctx) error {
+	app.GET("/", func(c flash.Ctx) error {
 		return c.String(http.StatusOK, "middleware ok")
 	})
 

@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/goflash/flash"
+	"github.com/goflash/flash/v2"
 )
 
 // main starts a goflash web server serving static files from multiple directories at /static.
